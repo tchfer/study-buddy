@@ -1,0 +1,31 @@
+<mat-sidenav-container class="h-full">
+  <mat-sidenav mode="side" opened>
+    <div class="px-4 py-3">
+      <div class="text-lg font-semibold">{{ title() }}</div>
+      <div class="text-xs opacity-70">Student portal demo</div>
+    </div>
+
+    <mat-divider />
+
+    <mat-nav-list>
+      @for (item of navItems(); track item.path) {
+        <a mat-list-item [routerLink]="item.path" routerLinkActive="active">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span class="font-medium">{{ title() }}</span>
+      <span class="flex-1"></span>
+      <a mat-button routerLink="/courses">Browse Courses</a>
+    </mat-toolbar>
+
+    <main class="p-4">
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
