@@ -1,0 +1,92 @@
+{
+  "courses": [
+    {
+      "id": "course-algebra-1",
+      "title": "Algebra I",
+      "subject": "Math",
+      "level": "High School",
+      "description": "Build confidence with linear equations, functions, and graphs.",
+      "tags": ["equations", "functions", "graphs"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-alg-1", "lesson-alg-2"],
+      "quizIds": ["quiz-alg-1"],
+      "updatedAt": "2026-05-01T12:00:00.000Z"
+    },
+    {
+      "id": "course-bio-basics",
+      "title": "Biology Basics",
+      "subject": "Science",
+      "level": "High School",
+      "description": "Cells, genetics, and the foundations of life.",
+      "tags": ["cells", "genetics"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-bio-1"],
+      "quizIds": ["quiz-bio-1"],
+      "updatedAt": "2026-05-10T12:00:00.000Z"
+    },
+    {
+      "id": "course-essay-writing",
+      "title": "Essay Writing Essentials",
+      "subject": "ELA",
+      "level": "College Prep",
+      "description": "Structure, clarity, citations, and revision techniques.",
+      "tags": ["writing", "revision", "citations"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-essay-1"],
+      "quizIds": [],
+      "updatedAt": "2026-05-12T12:00:00.000Z"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson-alg-1",
+      "courseId": "course-algebra-1",
+      "title": "Solving Linear Equations",
+      "durationSeconds": 540,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-alg-2",
+      "courseId": "course-algebra-1",
+      "title": "Slope and Graphing",
+      "durationSeconds": 615,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-bio-1",
+      "courseId": "course-bio-basics",
+      "title": "Cells and Organelles",
+      "durationSeconds": 720,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-essay-1",
+      "courseId": "course-essay-writing",
+      "title": "Thesis and Structure",
+      "durationSeconds": 600,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz-alg-1",
+      "courseId": "course-algebra-1",
+      "title": "Algebra I Checkpoint",
+      "questionCount": 5
+    },
+    {
+      "id": "quiz-bio-1",
+      "courseId": "course-bio-basics",
+      "title": "Biology Basics Checkpoint",
+      "questionCount": 4
+    }
+  ]
+}
