@@ -9,11 +9,12 @@
           (click)="toggleFavorite(course.id, course.title)"
           [attr.aria-label]="library.isFavorite(course.id) ? 'Remove from favorites' : 'Add to favorites'"
         >
-          @if (library.isFavorite(course.id)) {
-            <mat-icon>star</mat-icon>
-          } @else {
-            <mat-icon>star_outline</mat-icon>
-          }
+          <mat-icon
+            [class.sb-icon-filled]="library.isFavorite(course.id)"
+            [color]="library.isFavorite(course.id) ? 'primary' : undefined"
+          >
+            star
+          </mat-icon>
         </button>
       </div>
       <div class="text-sm opacity-80">{{ course.subject }} • {{ course.level }}</div>
