@@ -3,13 +3,15 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Course } from '../models/course.model';
+import { ApiCache } from './api-cache.service';
 
 @Injectable({ providedIn: 'root' })
 export class CoursesApi {
   private readonly http = inject(HttpClient);
+  private readonly cache = inject(ApiCache);
 
   getCourseById(courseId: string): Observable<Course> {
-    return this.http.get<Course>(`/api/courses/${courseId}`);
+    return this.cache.get(`courses:id:${courseId}`, () => this.http.get<Course>(`/api/courses/${courseId}`));
   }
 
   searchCourses(query: string): Observable<Course[]> {
@@ -21,6 +23,7 @@ export class CoursesApi {
       params = params.set('q', trimmed);
     }
 
-    return this.http.get<Course[]>('/api/courses', { params });
+    const key = trimmed.length > 0 ? `courses:search:q=${encodeURIComponent(trimmed)}` : 'courses:search:all';
+    return this.cache.get(key, () => this.http.get<Course[]>('/api/courses', { params }));
   }
 }
