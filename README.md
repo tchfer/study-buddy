@@ -75,10 +75,22 @@ Build:
 npm run build
 ```
 
+Lint:
+
+```bash
+npm run lint
+```
+
 Unit tests:
 
 ```bash
 npm test
+```
+
+Run tests once (non-watch):
+
+```bash
+npm test -- --watch=false
 ```
 
 ## Project structure
