@@ -11,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { Question } from '../../core/models/question.model';
 import { QuizzesApi } from '../../core/services/quizzes-api.service';
+import { ActivityStore } from '../../state/activity.store';
 
 @Component({
   selector: 'app-quiz-page',
@@ -19,6 +20,7 @@ import { QuizzesApi } from '../../core/services/quizzes-api.service';
 })
 export class QuizPage {
   private readonly api = inject(QuizzesApi);
+  private readonly activityStore = inject(ActivityStore);
 
   protected readonly quizzes = toSignal(this.api.getQuizzes(), { initialValue: [] });
 
@@ -103,6 +105,10 @@ export class QuizPage {
     if (nextIndex >= this.total()) {
       this.started.set(false);
       this.completed.set(true);
+
+      const quizId = this.selectedQuizId();
+      const quizTitle = this.quizzes().find((q) => q.id === quizId)?.title ?? 'Quiz';
+      this.activityStore.recordQuiz(quizId, quizTitle, this.score(), this.total());
       return;
     }
 

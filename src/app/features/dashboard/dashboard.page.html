@@ -4,13 +4,21 @@
   @if (hasRecent()) {
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Continue learning</mat-card-title>
+        <mat-card-title>Recent activity</mat-card-title>
         <mat-card-subtitle>Pick up where you left off</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <ul class="list-disc pl-5">
-          @for (title of recent(); track title) {
-            <li>{{ title }}</li>
+          @for (item of recent(); track item.at) {
+            <li>
+              @if (item.kind === 'lesson') {
+                <a class="underline" [routerLink]="['/player', item.lessonId]">{{ item.title }}</a>
+                <span class="opacity-70">(lesson)</span>
+              } @else {
+                <a class="underline" [routerLink]="['/quiz']">{{ item.title }}</a>
+                <span class="opacity-70">(quiz: {{ item.score }} / {{ item.total }})</span>
+              }
+            </li>
           }
         </ul>
       </mat-card-content>

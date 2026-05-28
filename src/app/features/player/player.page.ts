@@ -1,13 +1,15 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { EMPTY, interval, map, switchMap } from 'rxjs';
+import { EMPTY, filter, interval, map, switchMap } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { Lesson } from '../../core/models/lesson.model';
 import { LessonsApi } from '../../core/services/lessons-api.service';
+import { ActivityStore } from '../../state/activity.store';
 import { ProgressStore } from '../../state/progress.store';
 
 @Component({
@@ -19,6 +21,7 @@ export class PlayerPage {
   private readonly route = inject(ActivatedRoute);
   private readonly lessonsApi = inject(LessonsApi);
   private readonly progressStore = inject(ProgressStore);
+  private readonly activityStore = inject(ActivityStore);
 
   protected readonly playing = signal(false);
 
@@ -38,6 +41,15 @@ export class PlayerPage {
   protected readonly progress = computed(() => this.progressStore.getLessonProgress(this.lessonId()));
 
   constructor() {
+    toObservable(this.lesson)
+      .pipe(
+        filter((lesson): lesson is Lesson => lesson !== null),
+        takeUntilDestroyed(),
+      )
+      .subscribe((lesson) => {
+        this.activityStore.recordLesson(lesson.id, lesson.title);
+      });
+
     // “Real-time progress”: tick while playing, update the store.
     toObservable(this.playing)
       .pipe(switchMap((isPlaying) => (isPlaying ? interval(1000) : EMPTY)), takeUntilDestroyed())
