@@ -34,6 +34,12 @@ export const routes: Routes = [
 		loadComponent: () => import('./features/analytics/analytics.page').then((m) => m.AnalyticsPage),
 	},
 	{
+		path: 'notifications',
+		title: 'Notifications',
+		loadComponent: () =>
+			import('./features/notifications/notifications.page').then((m) => m.NotificationsPage),
+	},
+	{
 		path: 'profile',
 		title: 'Profile',
 		loadComponent: () => import('./features/profile/profile.page').then((m) => m.ProfilePage),

@@ -1,0 +1,52 @@
+<div class="grid gap-4">
+  <h1 class="text-2xl font-semibold">Notifications</h1>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Inbox</mat-card-title>
+      <mat-card-subtitle>Saved locally on this device</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="grid gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="opacity-70">Unread: {{ unreadCount() }}</div>
+        <span class="flex-1"></span>
+        <button mat-stroked-button type="button" (click)="markAllRead()" [disabled]="unreadCount() === 0">
+          Mark all read
+        </button>
+        <button mat-stroked-button type="button" (click)="clearAll()" [disabled]="notifications().length === 0">
+          Clear
+        </button>
+      </div>
+
+      @if (notifications().length > 0) {
+        <mat-list>
+          @for (item of notifications(); track item.id) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>{{ iconFor(item) }}</mat-icon>
+
+              <div matListItemTitle class="flex flex-wrap items-center gap-2">
+                <span class="font-medium">{{ item.title }}</span>
+                @if (!item.readAt) {
+                  <span class="text-xs font-medium opacity-70">New</span>
+                }
+              </div>
+
+              <div matListItemLine class="opacity-80">{{ item.message }}</div>
+              <div matListItemLine class="text-xs opacity-70">{{ formatTime(item.at) }}</div>
+
+              <button mat-icon-button type="button" matListItemMeta (click)="open(item)" aria-label="Open notification">
+                <mat-icon>open_in_new</mat-icon>
+              </button>
+              <button mat-icon-button type="button" matListItemMeta (click)="remove(item)" aria-label="Remove notification">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-list-item>
+          }
+        </mat-list>
+      } @else {
+        <div class="opacity-70">No notifications yet.</div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

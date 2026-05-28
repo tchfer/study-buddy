@@ -10,7 +10,22 @@
     <mat-nav-list>
       @for (item of navItems(); track item.path) {
         <a mat-list-item [routerLink]="item.path" routerLinkActive="active">
-          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          @if (item.path === '/notifications') {
+            <mat-icon
+              matListItemIcon
+              [matBadge]="unreadNotifications()"
+              [matBadgeHidden]="unreadNotifications() === 0"
+              matBadgeSize="small"
+              matBadgeColor="accent"
+              matBadgeOverlap="false"
+              aria-hidden="false"
+              aria-label="Notifications"
+            >
+              {{ item.icon }}
+            </mat-icon>
+          } @else {
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          }
           <span matListItemTitle>{{ item.label }}</span>
         </a>
       }
