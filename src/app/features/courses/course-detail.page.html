@@ -1,7 +1,21 @@
 <div class="grid gap-4">
   @if (course(); as course) {
     <div class="grid gap-2">
-      <h1 class="text-2xl font-semibold">{{ course.title }}</h1>
+      <div class="flex flex-wrap items-center gap-2">
+        <h1 class="text-2xl font-semibold">{{ course.title }}</h1>
+        <button
+          mat-icon-button
+          type="button"
+          (click)="toggleFavorite(course.id, course.title)"
+          [attr.aria-label]="library.isFavorite(course.id) ? 'Remove from favorites' : 'Add to favorites'"
+        >
+          @if (library.isFavorite(course.id)) {
+            <mat-icon>star</mat-icon>
+          } @else {
+            <mat-icon>star_outline</mat-icon>
+          }
+        </button>
+      </div>
       <div class="text-sm opacity-80">{{ course.subject }} • {{ course.level }}</div>
       <p class="text-sm opacity-80">{{ course.description }}</p>
     </div>
