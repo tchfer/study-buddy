@@ -2,8 +2,60 @@
   <h1 class="text-2xl font-semibold">Analytics</h1>
 
   <mat-card>
+    <mat-card-header>
+      <mat-card-title>Progress</mat-card-title>
+      <mat-card-subtitle>Based on the lessons you’ve played</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="grid gap-2">
+      <div class="flex flex-wrap gap-4">
+        <div><span class="font-medium">Tracked lessons:</span> {{ trackedLessons() }}</div>
+        <div><span class="font-medium">In progress:</span> {{ inProgressLessons() }}</div>
+        <div><span class="font-medium">Completed:</span> {{ completedLessons() }}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Quiz performance</mat-card-title>
+      <mat-card-subtitle>From recent quiz attempts</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="grid gap-2">
+      <div class="flex flex-wrap gap-4">
+        <div><span class="font-medium">Attempts:</span> {{ quizAttempts() }}</div>
+
+        @if (averageQuizPercent(); as avg) {
+          <div><span class="font-medium">Average score:</span> {{ avg }}%</div>
+        } @else {
+          <div class="opacity-70">No quiz attempts yet.</div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Recent activity</mat-card-title>
+      <mat-card-subtitle>Last events recorded locally</mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
-      Simple charts/metrics will go here (study streak, completion rate, quiz accuracy).
+      @if (recent().length > 0) {
+        <ul class="list-disc pl-5">
+          @for (item of recent(); track item.at) {
+            <li>
+              @if (item.kind === 'lesson') {
+                <a class="underline" [routerLink]="['/player', item.lessonId]">{{ item.title }}</a>
+                <span class="opacity-70">— {{ formatTime(item.at) }}</span>
+              } @else {
+                <a class="underline" [routerLink]="['/quiz']">{{ item.title }}</a>
+                <span class="opacity-70">— {{ item.score }} / {{ item.total }} — {{ formatTime(item.at) }}</span>
+              }
+            </li>
+          }
+        </ul>
+      } @else {
+        <div class="opacity-70">No activity yet. Try playing a lesson or taking a quiz.</div>
+      }
     </mat-card-content>
   </mat-card>
 </div>
