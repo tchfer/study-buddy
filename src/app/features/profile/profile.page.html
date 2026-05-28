@@ -3,6 +3,21 @@
 
   <mat-card>
     <mat-card-header>
+      <mat-card-title>Appearance</mat-card-title>
+      <mat-card-subtitle>Theme preferences</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-slide-toggle
+        [checked]="ui.darkMode()"
+        (change)="ui.setDarkMode($event.checked)"
+      >
+        Dark mode
+      </mat-slide-toggle>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
       <mat-card-title>Favorites</mat-card-title>
       <mat-card-subtitle>Courses you’ve starred</mat-card-subtitle>
     </mat-card-header>
