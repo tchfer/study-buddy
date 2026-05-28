@@ -1,0 +1,39 @@
+<div class="grid gap-4">
+  @if (course(); as course) {
+    <div class="grid gap-2">
+      <h1 class="text-2xl font-semibold">{{ course.title }}</h1>
+      <div class="text-sm opacity-80">{{ course.subject }} • {{ course.level }}</div>
+      <p class="text-sm opacity-80">{{ course.description }}</p>
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Lessons</mat-card-title>
+        <mat-card-subtitle>Pick a lesson to start</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-nav-list>
+          @for (lesson of lessons(); track lesson.id) {
+            <a mat-list-item [routerLink]="['/player', lesson.id]">
+              <span matListItemTitle>{{ lesson.title }}</span>
+              <span matListItemLine class="text-xs opacity-70">
+                Duration: {{ lesson.durationSeconds }}s
+              </span>
+            </a>
+          }
+        </mat-nav-list>
+      </mat-card-content>
+
+      <mat-divider />
+
+      <mat-card-actions align="end">
+        <a mat-button routerLink="/courses">Back to catalog</a>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <mat-card>
+      <mat-card-content>Loading course…</mat-card-content>
+    </mat-card>
+  }
+</div>

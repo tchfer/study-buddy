@@ -8,6 +8,10 @@ import { Course } from '../models/course.model';
 export class CoursesApi {
   private readonly http = inject(HttpClient);
 
+  getCourseById(courseId: string): Observable<Course> {
+    return this.http.get<Course>(`/api/courses/${courseId}`);
+  }
+
   searchCourses(query: string): Observable<Course[]> {
     let params = new HttpParams();
 

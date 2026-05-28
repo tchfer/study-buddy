@@ -13,6 +13,17 @@ export const routes: Routes = [
 		loadComponent: () => import('./features/courses/courses.page').then((m) => m.CoursesPage),
 	},
 	{
+		path: 'courses/:courseId',
+		title: 'Course',
+		loadComponent: () =>
+			import('./features/courses/course-detail.page').then((m) => m.CourseDetailPage),
+	},
+	{
+		path: 'player/:lessonId',
+		title: 'Lesson Player',
+		loadComponent: () => import('./features/player/player.page').then((m) => m.PlayerPage),
+	},
+	{
 		path: 'quiz',
 		title: 'Quiz',
 		loadComponent: () => import('./features/quiz/quiz.page').then((m) => m.QuizPage),

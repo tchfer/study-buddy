@@ -1,0 +1,36 @@
+<div class="grid gap-4">
+  @if (lesson(); as lesson) {
+    <div class="grid gap-1">
+      <h1 class="text-2xl font-semibold">{{ lesson.title }}</h1>
+      <div class="text-sm opacity-80">Lesson duration: {{ lesson.durationSeconds }}s</div>
+    </div>
+
+    <mat-card>
+      <mat-card-content class="grid gap-3">
+        <div class="text-sm opacity-80">
+          This is a lightweight “player” used to practice signals + RxJS progress updates.
+        </div>
+
+        <mat-progress-bar [value]="progress()" />
+        <div class="text-sm">Progress: {{ progress() }}%</div>
+
+        <div class="flex flex-wrap gap-2">
+          <button mat-raised-button color="primary" (click)="togglePlay()">
+            @if (playing()) {
+              Pause
+            } @else {
+              Play
+            }
+          </button>
+
+          <button mat-button (click)="reset()">Reset</button>
+          <a mat-button routerLink="/courses">Back to catalog</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <mat-card>
+      <mat-card-content>Loading lesson…</mat-card-content>
+    </mat-card>
+  }
+</div>
