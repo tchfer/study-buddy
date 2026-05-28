@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Lesson } from '../../core/models/lesson.model';
 import { LessonsApi } from '../../core/services/lessons-api.service';
 import { ActivityStore } from '../../state/activity.store';
+import { NotificationsStore } from '../../state/notifications.store';
 import { ProgressStore } from '../../state/progress.store';
 
 @Component({
@@ -22,6 +23,7 @@ export class PlayerPage {
   private readonly lessonsApi = inject(LessonsApi);
   private readonly progressStore = inject(ProgressStore);
   private readonly activityStore = inject(ActivityStore);
+  private readonly notifications = inject(NotificationsStore);
 
   protected readonly playing = signal(false);
 
@@ -57,10 +59,20 @@ export class PlayerPage {
         const lesson = this.lesson();
         if (!lesson) return;
 
+        const previous = this.progress();
         const seconds = lesson.durationSeconds || 1;
         const increment = 100 / Math.max(1, Math.ceil(seconds / 10));
         const next = Math.min(100, this.progress() + increment);
         this.progressStore.setLessonProgress(this.lessonId(), next);
+
+        if (previous < 100 && next >= 100) {
+          this.notifications.add({
+            kind: 'lesson',
+            title: 'Lesson completed',
+            message: lesson.title,
+            route: `/player/${lesson.id}`,
+          });
+        }
 
         if (next >= 100) {
           this.playing.set(false);
