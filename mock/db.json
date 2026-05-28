@@ -8,8 +8,8 @@
       "description": "Build confidence with linear equations, functions, and graphs.",
       "tags": ["equations", "functions", "graphs"],
       "coverImageUrl": "",
-      "lessonIds": ["lesson-alg-1", "lesson-alg-2"],
-      "quizIds": ["quiz-alg-1"],
+      "lessonIds": ["lesson-alg-1", "lesson-alg-2", "lesson-alg-3"],
+      "quizIds": ["quiz-alg-1", "quiz-alg-2"],
       "updatedAt": "2026-05-01T12:00:00.000Z"
     },
     {
@@ -20,8 +20,8 @@
       "description": "Cells, genetics, and the foundations of life.",
       "tags": ["cells", "genetics"],
       "coverImageUrl": "",
-      "lessonIds": ["lesson-bio-1"],
-      "quizIds": ["quiz-bio-1"],
+      "lessonIds": ["lesson-bio-1", "lesson-bio-2", "lesson-bio-3"],
+      "quizIds": ["quiz-bio-1", "quiz-bio-2"],
       "updatedAt": "2026-05-10T12:00:00.000Z"
     },
     {
@@ -32,9 +32,69 @@
       "description": "Structure, clarity, citations, and revision techniques.",
       "tags": ["writing", "revision", "citations"],
       "coverImageUrl": "",
-      "lessonIds": ["lesson-essay-1"],
-      "quizIds": [],
+      "lessonIds": ["lesson-essay-1", "lesson-essay-2", "lesson-essay-3"],
+      "quizIds": ["quiz-essay-1"],
       "updatedAt": "2026-05-12T12:00:00.000Z"
+    },
+    {
+      "id": "course-geometry-foundations",
+      "title": "Geometry Foundations",
+      "subject": "Math",
+      "level": "High School",
+      "description": "Angles, triangles, and the core tools of geometric reasoning.",
+      "tags": ["angles", "triangles", "proofs"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-geo-1", "lesson-geo-2", "lesson-geo-3"],
+      "quizIds": ["quiz-geo-1"],
+      "updatedAt": "2026-05-18T12:00:00.000Z"
+    },
+    {
+      "id": "course-chem-intro",
+      "title": "Intro to Chemistry",
+      "subject": "Science",
+      "level": "High School",
+      "description": "Atoms, bonds, and how matter behaves.",
+      "tags": ["atoms", "bonds", "reactions"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-chem-1", "lesson-chem-2"],
+      "quizIds": ["quiz-chem-1"],
+      "updatedAt": "2026-05-20T12:00:00.000Z"
+    },
+    {
+      "id": "course-world-history-1",
+      "title": "World History: Early Civilizations",
+      "subject": "History",
+      "level": "High School",
+      "description": "From Mesopotamia to ancient Greece — how civilizations formed and changed.",
+      "tags": ["civilizations", "trade", "government"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-hist-1", "lesson-hist-2"],
+      "quizIds": ["quiz-hist-1"],
+      "updatedAt": "2026-05-22T12:00:00.000Z"
+    },
+    {
+      "id": "course-python-basics",
+      "title": "Python Basics",
+      "subject": "Computer Science",
+      "level": "Beginner",
+      "description": "Variables, control flow, functions, and a first look at debugging.",
+      "tags": ["python", "programming", "functions"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-py-1", "lesson-py-2", "lesson-py-3"],
+      "quizIds": ["quiz-py-1"],
+      "updatedAt": "2026-05-25T12:00:00.000Z"
+    },
+    {
+      "id": "course-econ-101",
+      "title": "Economics 101",
+      "subject": "Social Studies",
+      "level": "College Prep",
+      "description": "Supply and demand, opportunity cost, and incentives.",
+      "tags": ["supply", "demand", "incentives"],
+      "coverImageUrl": "",
+      "lessonIds": ["lesson-econ-1", "lesson-econ-2"],
+      "quizIds": ["quiz-econ-1"],
+      "updatedAt": "2026-05-27T12:00:00.000Z"
     }
   ],
   "lessons": [
@@ -57,6 +117,15 @@
       "order": 2
     },
     {
+      "id": "lesson-alg-3",
+      "courseId": "course-algebra-1",
+      "title": "Inequalities and Number Lines",
+      "durationSeconds": 510,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 3
+    },
+    {
       "id": "lesson-bio-1",
       "courseId": "course-bio-basics",
       "title": "Cells and Organelles",
@@ -66,6 +135,24 @@
       "order": 1
     },
     {
+      "id": "lesson-bio-2",
+      "courseId": "course-bio-basics",
+      "title": "DNA, Genes, and Traits",
+      "durationSeconds": 780,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-bio-3",
+      "courseId": "course-bio-basics",
+      "title": "Photosynthesis vs. Cellular Respiration",
+      "durationSeconds": 840,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 3
+    },
+    {
       "id": "lesson-essay-1",
       "courseId": "course-essay-writing",
       "title": "Thesis and Structure",
@@ -73,6 +160,132 @@
       "videoUrl": "",
       "transcript": "",
       "order": 1
+    },
+    {
+      "id": "lesson-essay-2",
+      "courseId": "course-essay-writing",
+      "title": "Paragraphs and Transitions",
+      "durationSeconds": 660,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-essay-3",
+      "courseId": "course-essay-writing",
+      "title": "Citations and Avoiding Plagiarism",
+      "durationSeconds": 690,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 3
+    },
+    {
+      "id": "lesson-geo-1",
+      "courseId": "course-geometry-foundations",
+      "title": "Angle Relationships",
+      "durationSeconds": 540,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-geo-2",
+      "courseId": "course-geometry-foundations",
+      "title": "Triangles and Congruence",
+      "durationSeconds": 660,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-geo-3",
+      "courseId": "course-geometry-foundations",
+      "title": "Area, Perimeter, and Circles",
+      "durationSeconds": 720,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 3
+    },
+    {
+      "id": "lesson-chem-1",
+      "courseId": "course-chem-intro",
+      "title": "Atoms, Elements, and the Periodic Table",
+      "durationSeconds": 750,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-chem-2",
+      "courseId": "course-chem-intro",
+      "title": "Bonds and Chemical Reactions",
+      "durationSeconds": 810,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-hist-1",
+      "courseId": "course-world-history-1",
+      "title": "Mesopotamia and the First Cities",
+      "durationSeconds": 660,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-hist-2",
+      "courseId": "course-world-history-1",
+      "title": "Ancient Greece: Ideas and Government",
+      "durationSeconds": 690,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-py-1",
+      "courseId": "course-python-basics",
+      "title": "Variables and Types",
+      "durationSeconds": 540,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-py-2",
+      "courseId": "course-python-basics",
+      "title": "Control Flow: if, for, while",
+      "durationSeconds": 720,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
+    },
+    {
+      "id": "lesson-py-3",
+      "courseId": "course-python-basics",
+      "title": "Functions and Debugging",
+      "durationSeconds": 780,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 3
+    },
+    {
+      "id": "lesson-econ-1",
+      "courseId": "course-econ-101",
+      "title": "Opportunity Cost and Tradeoffs",
+      "durationSeconds": 600,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 1
+    },
+    {
+      "id": "lesson-econ-2",
+      "courseId": "course-econ-101",
+      "title": "Supply and Demand Basics",
+      "durationSeconds": 720,
+      "videoUrl": "",
+      "transcript": "",
+      "order": 2
     }
   ],
   "quizzes": [
@@ -83,10 +296,58 @@
       "questionCount": 3
     },
     {
+      "id": "quiz-alg-2",
+      "courseId": "course-algebra-1",
+      "title": "Graphing and Inequalities",
+      "questionCount": 3
+    },
+    {
       "id": "quiz-bio-1",
       "courseId": "course-bio-basics",
       "title": "Biology Basics Checkpoint",
       "questionCount": 2
+    },
+    {
+      "id": "quiz-bio-2",
+      "courseId": "course-bio-basics",
+      "title": "DNA and Energy",
+      "questionCount": 3
+    },
+    {
+      "id": "quiz-essay-1",
+      "courseId": "course-essay-writing",
+      "title": "Essay Writing Quick Check",
+      "questionCount": 2
+    },
+    {
+      "id": "quiz-geo-1",
+      "courseId": "course-geometry-foundations",
+      "title": "Geometry Foundations Checkpoint",
+      "questionCount": 3
+    },
+    {
+      "id": "quiz-chem-1",
+      "courseId": "course-chem-intro",
+      "title": "Intro to Chemistry Checkpoint",
+      "questionCount": 3
+    },
+    {
+      "id": "quiz-hist-1",
+      "courseId": "course-world-history-1",
+      "title": "Early Civilizations Checkpoint",
+      "questionCount": 2
+    },
+    {
+      "id": "quiz-py-1",
+      "courseId": "course-python-basics",
+      "title": "Python Basics Checkpoint",
+      "questionCount": 4
+    },
+    {
+      "id": "quiz-econ-1",
+      "courseId": "course-econ-101",
+      "title": "Economics 101 Checkpoint",
+      "questionCount": 3
     }
   ],
   "questions": [
@@ -112,6 +373,27 @@
       "correctIndex": 2
     },
     {
+      "id": "q-alg2-1",
+      "quizId": "quiz-alg-2",
+      "prompt": "Which point is on the line y = 2x + 1?",
+      "options": ["(0, 2)", "(1, 3)", "(2, 2)", "(-1, 0)"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-alg2-2",
+      "quizId": "quiz-alg-2",
+      "prompt": "If x < 4, which value satisfies the inequality?",
+      "options": ["4", "5", "3", "10"],
+      "correctIndex": 2
+    },
+    {
+      "id": "q-alg2-3",
+      "quizId": "quiz-alg-2",
+      "prompt": "A line has slope -1. What does that mean?",
+      "options": ["It rises 1 for every 1 right", "It falls 1 for every 1 right", "It is vertical", "It is horizontal"],
+      "correctIndex": 1
+    },
+    {
       "id": "q-bio-1",
       "quizId": "quiz-bio-1",
       "prompt": "Which organelle contains genetic material?",
@@ -123,6 +405,146 @@
       "quizId": "quiz-bio-1",
       "prompt": "The basic unit of life is the…",
       "options": ["Tissue", "Cell", "Organ", "System"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-bio2-1",
+      "quizId": "quiz-bio-2",
+      "prompt": "DNA stands for…",
+      "options": ["Deoxyribonucleic acid", "Dynamic nucleic acid", "Deoxygenated nitrogen array", "Double nucleotide axis"],
+      "correctIndex": 0
+    },
+    {
+      "id": "q-bio2-2",
+      "quizId": "quiz-bio-2",
+      "prompt": "Photosynthesis happens mainly in the…",
+      "options": ["Mitochondria", "Chloroplast", "Nucleus", "Cell wall"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-bio2-3",
+      "quizId": "quiz-bio-2",
+      "prompt": "Cellular respiration releases energy mostly as…",
+      "options": ["ATP", "DNA", "Chlorophyll", "Water"],
+      "correctIndex": 0
+    },
+    {
+      "id": "q-essay-1",
+      "quizId": "quiz-essay-1",
+      "prompt": "A thesis statement should be…",
+      "options": ["a topic", "a clear claim", "a quote", "a question"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-essay-2",
+      "quizId": "quiz-essay-1",
+      "prompt": "A good transition helps…",
+      "options": ["hide evidence", "connect ideas", "avoid structure", "replace citations"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-geo-1",
+      "quizId": "quiz-geo-1",
+      "prompt": "Vertical angles are…",
+      "options": ["always supplementary", "always congruent", "always right angles", "always parallel"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-geo-2",
+      "quizId": "quiz-geo-1",
+      "prompt": "Which set can prove triangle congruence?",
+      "options": ["AAA", "SSA", "SSS", "AAS only"],
+      "correctIndex": 2
+    },
+    {
+      "id": "q-geo-3",
+      "quizId": "quiz-geo-1",
+      "prompt": "Circumference of a circle is…",
+      "options": ["πr", "2πr", "πr^2", "2r"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-chem-1",
+      "quizId": "quiz-chem-1",
+      "prompt": "An element is defined by its number of…",
+      "options": ["neutrons", "electrons", "protons", "isotopes"],
+      "correctIndex": 2
+    },
+    {
+      "id": "q-chem-2",
+      "quizId": "quiz-chem-1",
+      "prompt": "Ionic bonds involve…",
+      "options": ["sharing electrons", "transferring electrons", "sharing protons", "splitting neutrons"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-chem-3",
+      "quizId": "quiz-chem-1",
+      "prompt": "A chemical reaction often produces…",
+      "options": ["new substances", "new elements", "fewer atoms", "no changes"],
+      "correctIndex": 0
+    },
+    {
+      "id": "q-hist-1",
+      "quizId": "quiz-hist-1",
+      "prompt": "One reason early cities formed was…",
+      "options": ["nomadic life", "agriculture surplus", "lack of trade", "no rivers"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-hist-2",
+      "quizId": "quiz-hist-1",
+      "prompt": "Ancient Greece is known for…",
+      "options": ["the printing press", "democracy and philosophy", "steam engines", "the internet"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-py-1",
+      "quizId": "quiz-py-1",
+      "prompt": "Which is a valid Python variable name?",
+      "options": ["2cool", "my_var", "my-var", "class"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-py-2",
+      "quizId": "quiz-py-1",
+      "prompt": "What does `len([1, 2, 3])` return?",
+      "options": ["2", "3", "[1,2,3]", "len"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-py-3",
+      "quizId": "quiz-py-1",
+      "prompt": "Which keyword starts a function definition?",
+      "options": ["func", "def", "lambda", "function"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-py-4",
+      "quizId": "quiz-py-1",
+      "prompt": "A `for` loop iterates over…",
+      "options": ["only numbers", "items in an iterable", "only strings", "only booleans"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-econ-1",
+      "quizId": "quiz-econ-1",
+      "prompt": "Opportunity cost is…",
+      "options": ["the money you spend", "the value of the next best alternative", "always zero", "a tax"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-econ-2",
+      "quizId": "quiz-econ-1",
+      "prompt": "If demand increases and supply stays the same, price tends to…",
+      "options": ["fall", "rise", "stay exactly the same", "become negative"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-econ-3",
+      "quizId": "quiz-econ-1",
+      "prompt": "Incentives generally…",
+      "options": ["do not matter", "change behavior", "only affect businesses", "only affect governments"],
       "correctIndex": 1
     }
   ]
