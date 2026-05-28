@@ -14,24 +14,35 @@ This repository is meant to practice **new Angular patterns** used in modern cod
 - Functional guards / interceptors and `inject()`
 - (Optional, advanced) Zoneless migration
 
-## Features (planned)
+## Modern vs legacy Angular (quick guide)
 
-- Student dashboard
+- **NgModules → Standalone**: no `AppModule`/feature modules; components declare `imports: [...]`, and app setup happens via `ApplicationConfig` + functional providers.
+- **Router**: prefer `loadComponent` routes (lazy by default) instead of module-based lazy loading.
+- **Templates**: built-in control flow (`@if`, `@for`, `@switch`) instead of `*ngIf/*ngFor/*ngSwitch`.
+- **State**: signals (`signal`, `computed`, `effect`) for local/shared state; RxJS still shines for streams (debounced search, timers). Use `toSignal/toObservable` to bridge.
+- **DI**: `inject()` inside classes/functions instead of constructor-only patterns when it improves ergonomics.
+- **Providers**: `provideHttpClient`, `provideRouter`, functional interceptors/guards (vs NgModule config).
+- **Deferrable views**: `@defer` for progressive rendering without manual lazy components.
+
+## Features
+
+- Student dashboard (recent activity)
 - Course catalog + smart search
-- Lesson player
-- Interactive quiz
-- Real-time progress
+- Course detail + lesson list
+- Lesson player + real-time progress
+- Interactive quiz runner (timed)
 - Favorites + history
 - Dark mode
-- Notifications
 - Simple analytics
+- Notifications (next)
 
 ## Tech stack
 
 - Angular (standalone)
 - Angular Material + TailwindCSS
 - RxJS
-- Mock backend: JSON Server (planned)
+- Mock backend: JSON Server (`mock/db.json`) + dev proxy (`/api`)
+- Request caching (client-side memoization)
 - E2E: Cypress (planned)
 
 ## Getting started
@@ -49,6 +60,14 @@ Run dev server:
 ```bash
 npm start
 ```
+
+Run mock API (JSON Server):
+
+```bash
+npm run api
+```
+
+The Angular dev server proxies `/api/*` to the mock API (see `proxy.conf.json`).
 
 Build:
 
