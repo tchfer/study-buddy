@@ -93,6 +93,12 @@ Run tests once (non-watch):
 npm test -- --watch=false
 ```
 
+One-command check (lint + unit tests + build):
+
+```bash
+npm run verify
+```
+
 ## Project structure
 
 ```
