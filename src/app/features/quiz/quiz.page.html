@@ -2,8 +2,73 @@
   <h1 class="text-2xl font-semibold">Interactive Quiz</h1>
 
   <mat-card>
-    <mat-card-content>
-      This will become a signal-driven quiz flow (question state + score) with RxJS timers.
+    <mat-card-content class="grid gap-3">
+      <div class="text-sm opacity-80">Choose a quiz:</div>
+
+      <div class="flex flex-wrap gap-2">
+        @for (quiz of quizzes(); track quiz.id) {
+          <button
+            mat-stroked-button
+            (click)="selectedQuizId.set(quiz.id)"
+            [disabled]="started()"
+          >
+            {{ quiz.title }}
+          </button>
+        }
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <button mat-raised-button color="primary" (click)="start()" [disabled]="started()">
+          Start
+        </button>
+
+        <div class="text-sm opacity-80">Score: {{ score() }}</div>
+        <div class="text-sm opacity-80">Time left: {{ secondsLeft() }}s</div>
+      </div>
+
+      <mat-progress-bar [value]="progressPercent()" />
     </mat-card-content>
   </mat-card>
+
+  @if (started()) {
+    @if (current(); as question) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Question {{ index() + 1 }} of {{ total() }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="grid gap-3">
+          <div class="text-base">{{ question.prompt }}</div>
+
+          <mat-radio-group
+            [value]="selectedIndex()"
+            (change)="selectedIndex.set($event.value)"
+            class="grid gap-2"
+          >
+            @for (opt of question.options; track opt; let i = $index) {
+              <mat-radio-button [value]="i">{{ opt }}</mat-radio-button>
+            }
+          </mat-radio-group>
+
+          <mat-divider />
+
+          <div class="flex gap-2">
+            <button mat-raised-button color="primary" (click)="submitAndNext()">Submit</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    } @else {
+      <mat-card>
+        <mat-card-content>Loading questions…</mat-card-content>
+      </mat-card>
+    }
+  } @else if (completed()) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Quiz completed</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        Final score: {{ score() }} / {{ total() }}
+      </mat-card-content>
+    </mat-card>
+  }
 </div>

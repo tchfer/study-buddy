@@ -80,13 +80,50 @@
       "id": "quiz-alg-1",
       "courseId": "course-algebra-1",
       "title": "Algebra I Checkpoint",
-      "questionCount": 5
+      "questionCount": 3
     },
     {
       "id": "quiz-bio-1",
       "courseId": "course-bio-basics",
       "title": "Biology Basics Checkpoint",
-      "questionCount": 4
+      "questionCount": 2
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-alg-1",
+      "quizId": "quiz-alg-1",
+      "prompt": "Solve: 2x + 3 = 11",
+      "options": ["x = 3", "x = 4", "x = 5", "x = 6"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-alg-2",
+      "quizId": "quiz-alg-1",
+      "prompt": "Which is a linear function?",
+      "options": ["y = x^2", "y = 2x + 1", "y = 1/x", "y = 2^x"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-alg-3",
+      "quizId": "quiz-alg-1",
+      "prompt": "Slope of the line y = 5x - 2 is…",
+      "options": ["-2", "0", "5", "-5"],
+      "correctIndex": 2
+    },
+    {
+      "id": "q-bio-1",
+      "quizId": "quiz-bio-1",
+      "prompt": "Which organelle contains genetic material?",
+      "options": ["Mitochondria", "Nucleus", "Ribosome", "Golgi apparatus"],
+      "correctIndex": 1
+    },
+    {
+      "id": "q-bio-2",
+      "quizId": "quiz-bio-1",
+      "prompt": "The basic unit of life is the…",
+      "options": ["Tissue", "Cell", "Organ", "System"],
+      "correctIndex": 1
     }
   ]
 }
