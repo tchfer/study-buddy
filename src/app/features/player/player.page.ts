@@ -59,13 +59,17 @@ export class PlayerPage {
         const lesson = this.lesson();
         if (!lesson) return;
 
-        const previous = this.progress();
+        const lessonId = this.lessonId();
+        if (!lessonId) return;
+
+        const previous = this.progressStore.getLessonProgress(lessonId);
         const seconds = lesson.durationSeconds || 1;
         const increment = 100 / Math.max(1, Math.ceil(seconds / 10));
-        const next = Math.min(100, this.progress() + increment);
-        this.progressStore.setLessonProgress(this.lessonId(), next);
+        const next = Math.min(100, previous + increment);
+        const nextRounded = Math.max(0, Math.min(100, Math.round(next)));
+        this.progressStore.setLessonProgress(lessonId, nextRounded);
 
-        if (previous < 100 && next >= 100) {
+        if (previous < 100 && nextRounded >= 100) {
           this.notifications.add({
             kind: 'lesson',
             title: 'Lesson completed',
@@ -74,7 +78,7 @@ export class PlayerPage {
           });
         }
 
-        if (next >= 100) {
+        if (nextRounded >= 100) {
           this.playing.set(false);
         }
       });
