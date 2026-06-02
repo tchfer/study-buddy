@@ -30,7 +30,7 @@
       <mat-card-content>
         <mat-nav-list>
           @for (lesson of lessons(); track lesson.id) {
-            <a mat-list-item [routerLink]="['/player', lesson.id]">
+            <a mat-list-item data-cy="open-lesson" [routerLink]="['/player', lesson.id]">
               <span matListItemTitle>{{ lesson.title }}</span>
               <span matListItemLine class="text-xs opacity-70">
                 Duration: {{ lesson.durationSeconds }}s
