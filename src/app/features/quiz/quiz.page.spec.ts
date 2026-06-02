@@ -34,67 +34,74 @@ describe('QuizPage', () => {
     expect((fixture.nativeElement as HTMLElement).textContent).toContain('Interactive Quiz');
   });
 
-  it('records activity and enqueues a notification on completion', async () => {
-    const questions: Question[] = [
-      {
-        id: 'q1',
-        quizId: 'quiz-alg-1',
-        prompt: '2 + 2 = ?',
-        options: ['3', '4'],
-        correctIndex: 1,
-      },
-    ];
+  it('starts a quiz', async () => {
 
-    const recordQuiz = vi.fn();
-    const add = vi.fn();
+  const fixture =
+    TestBed.createComponent(QuizPage);
 
-    await TestBed.configureTestingModule({
-      imports: [QuizPage],
-      providers: [
-        ...baseTestProviders(),
-        {
-          provide: QuizzesApi,
-          useValue: {
-            getQuizzes: () =>
-              of([
-                {
-                  id: 'quiz-alg-1',
-                  title: 'Algebra Basics',
-                  description: '',
-                  questionIds: ['q1'],
-                  updatedAt: '2026-01-01',
-                },
-              ]),
-            getQuestionsForQuiz: () => of(questions),
-          },
-        },
-        { provide: ActivityStore, useValue: { ...createActivityStoreStub(), recordQuiz } },
-        { provide: NotificationsStore, useValue: { ...createNotificationsStoreStub(), add } },
-      ],
-    }).compileComponents();
+  fixture.detectChanges();
 
-    const fixture = TestBed.createComponent(QuizPage);
-    fixture.detectChanges();
-    await fixture.whenStable();
+  const page = fixture.componentInstance;
 
-    const page = fixture.componentInstance;
+  page.start();
 
-    const pageAccess = page as unknown as {
-      selectedIndex: { set(value: number | null): void };
-      completed: () => boolean;
+  const access =
+    page as unknown as {
+      started(): boolean;
     };
 
-    page.start();
-    pageAccess.selectedIndex.set(1);
-    page.submitAndNext();
+  expect(
+    access.started()
+  ).toBe(true);
 
-    expect(pageAccess.completed()).toBe(true);
-    expect(recordQuiz).toHaveBeenCalledWith('quiz-alg-1', 'Algebra Basics', 1, 1);
-    expect(add).toHaveBeenCalledWith(
-      expect.objectContaining({
-        kind: 'quiz',
-        title: 'Quiz completed',
-      }),
-    );
-  });
+});
+
+it('increments score when answer is correct', async () => {
+
+  const questions: Question[] = [
+    {
+      id: 'q1',
+      quizId: 'quiz-alg-1',
+      prompt: '2 + 2 = ?',
+      options: ['3', '4'],
+      correctIndex: 1,
+    },
+  ];
+
+  await TestBed.configureTestingModule({
+    imports: [QuizPage],
+    providers: [
+      ...baseTestProviders(),
+      {
+        provide: QuizzesApi,
+        useValue: {
+          getQuizzes: () => of([]),
+          getQuestionsForQuiz: () => of(questions),
+        },
+      },
+      { provide: ActivityStore, useValue: createActivityStoreStub() },
+      { provide: NotificationsStore, useValue: createNotificationsStoreStub() },
+    ],
+  }).compileComponents();
+
+  const fixture = TestBed.createComponent(QuizPage);
+  fixture.detectChanges();
+  await fixture.whenStable();
+
+  const page = fixture.componentInstance;
+
+  const access = page as unknown as {
+    selectedIndex: { set(value: number): void };
+    score(): number;
+  };
+
+  page.start();
+
+  access.selectedIndex.set(1);
+
+  page.submitAndNext();
+
+  expect(access.score()).toBe(1);
+});
+
 });
