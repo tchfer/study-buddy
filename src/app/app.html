@@ -36,7 +36,13 @@
     <mat-toolbar color="primary">
       <span class="font-medium">{{ title() }}</span>
       <span class="flex-1"></span>
-      <a mat-button routerLink="/courses">Browse Courses</a>
+      <a
+        mat-button
+        routerLink="/courses"
+        data-cy="browse-courses"
+      >
+        Browse Courses
+      </a>
     </mat-toolbar>
 
     @if (uiStore.loading()) {
