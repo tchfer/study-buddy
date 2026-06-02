@@ -12,10 +12,10 @@
         </div>
 
         <mat-progress-bar [value]="progress()" />
-        <div class="text-sm">Progress: {{ progress() }}%</div>
+        <div data-cy="lesson-progress" class="text-sm">Progress: {{ progress() }}%</div>
 
         <div class="flex flex-wrap gap-2">
-          <button mat-raised-button color="primary" (click)="togglePlay()">
+          <button data-cy="play-lesson" mat-raised-button color="primary" (click)="togglePlay()">
             @if (playing()) {
               Pause
             } @else {
@@ -23,7 +23,7 @@
             }
           </button>
 
-          <button mat-button (click)="reset()">Reset</button>
+          <button data-cy="reset-lesson" mat-button (click)="reset()">Reset</button>
           <a mat-button routerLink="/courses">Back to catalog</a>
         </div>
       </mat-card-content>
