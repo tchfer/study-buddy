@@ -31,6 +31,7 @@ function saveState(state: UiState): void {
 @Injectable({ providedIn: 'root' })
 export class UiStore {
   readonly darkMode = signal(loadState().darkMode);
+  readonly loading = signal(false);
 
   constructor() {
     effect(() => {
@@ -44,5 +45,13 @@ export class UiStore {
 
   toggleDarkMode(): void {
     this.darkMode.update((v) => !v);
+  }
+
+  startLoading(): void {
+    this.loading.set(true);
+  }
+
+  stopLoading(): void {
+    this.loading.set(false);
   }
 }
