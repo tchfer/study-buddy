@@ -8,6 +8,7 @@
       <div class="flex flex-wrap gap-2">
         @for (quiz of quizzes(); track quiz.id) {
           <button
+            data-cy="quiz-selector"
             mat-stroked-button
             (click)="selectedQuizId.set(quiz.id)"
             [disabled]="started()"
@@ -18,7 +19,7 @@
       </div>
 
       <div class="flex flex-wrap items-center gap-3">
-        <button mat-raised-button color="primary" (click)="start()" [disabled]="started()">
+        <button data-cy="start-quiz" mat-raised-button color="primary" (click)="start()" [disabled]="started()">
           Start
         </button>
 
@@ -52,17 +53,17 @@
           <mat-divider />
 
           <div class="flex gap-2">
-            <button mat-raised-button color="primary" (click)="submitAndNext()">Submit</button>
+            <button data-cy="submit-answer"mat-raised-button color="primary" (click)="submitAndNext()">Submit</button>
           </div>
         </mat-card-content>
       </mat-card>
     } @else {
-      <mat-card>
+      <mat-card data-cy="question-card">
         <mat-card-content>Loading questions…</mat-card-content>
       </mat-card>
     }
   } @else if (completed()) {
-    <mat-card>
+    <mat-card data-cy="quiz-completed">
       <mat-card-header>
         <mat-card-title>Quiz completed</mat-card-title>
       </mat-card-header>
