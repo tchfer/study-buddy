@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { quizAccessGuard } from './core/guards/quiz-access.guard';
 
 export const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -24,8 +25,9 @@ export const routes: Routes = [
 		loadComponent: () => import('./features/player/player.page').then((m) => m.PlayerPage),
 	},
 	{
-		path: 'quiz',
+  path: 'quiz',
 		title: 'Quiz',
+		canActivate: [quizAccessGuard],
 		loadComponent: () => import('./features/quiz/quiz.page').then((m) => m.QuizPage),
 	},
 	{
