@@ -1,10 +1,15 @@
 describe('Quiz Guard', () => {
 
-  it('blocks access when no lesson is completed', () => {
+  beforeEach(() => {
+    cy.clearLocalStorage();
+  });
+
+  it('redirects users without completed lessons', () => {
 
     cy.visit('/quiz');
 
-    cy.url().should('include', '/courses');
+    cy.url()
+      .should('include', '/courses');
 
   });
 
