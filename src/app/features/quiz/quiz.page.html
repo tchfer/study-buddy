@@ -33,7 +33,7 @@
 
   @if (started()) {
     @if (current(); as question) {
-      <mat-card>
+      <mat-card data-cy="question-card">
         <mat-card-header>
           <mat-card-title>Question {{ index() + 1 }} of {{ total() }}</mat-card-title>
         </mat-card-header>
@@ -46,14 +46,14 @@
             class="grid gap-2"
           >
             @for (opt of question.options; track opt; let i = $index) {
-              <mat-radio-button [value]="i">{{ opt }}</mat-radio-button>
+              <mat-radio-button data-cy="answer-option" [value]="i">{{ opt }}</mat-radio-button>
             }
           </mat-radio-group>
 
           <mat-divider />
 
           <div class="flex gap-2">
-            <button data-cy="submit-answer"mat-raised-button color="primary" (click)="submitAndNext()">Submit</button>
+            <button data-cy="submit-answer" mat-raised-button color="primary" (click)="submitAndNext()">Submit</button>
           </div>
         </mat-card-content>
       </mat-card>
