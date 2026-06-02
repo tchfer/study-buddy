@@ -40,6 +40,13 @@ export class QuizPage {
   protected readonly score = signal(0);
 
   private readonly secondsPerQuestion = 15;
+
+  private readonly index$ =
+  toObservable(this.index);
+
+private readonly started$ =
+  toObservable(this.started);
+
   protected readonly secondsLeft = signal(this.secondsPerQuestion);
 
   protected readonly current = computed<Question | null>(() => this.questions()[this.index()] ?? null);
@@ -64,23 +71,26 @@ export class QuizPage {
       });
 
     // Restart countdown when the question changes (only while started).
-    toObservable(this.started)
-      .pipe(
-        switchMap((isStarted) =>
-          isStarted
-            ? toObservable(this.index).pipe(
-                switchMap(() => timer(0, 1000).pipe(map((t) => this.secondsPerQuestion - t))),
-              )
-            : EMPTY,
-        ),
-        takeUntilDestroyed(),
-      )
-      .subscribe((seconds) => {
-        this.secondsLeft.set(Math.max(0, seconds));
-        if (seconds === 0) {
-          this.submitAndNext();
-        }
-      });
+    this.started$
+  .pipe(
+    switchMap((isStarted) =>
+      isStarted
+        ? this.index$.pipe(
+            switchMap(() =>
+              timer(0, 1000).pipe(
+                map((t) => this.secondsPerQuestion - t)
+              ),
+            ),
+          )
+        : EMPTY,
+    ),
+    takeUntilDestroyed(),
+  ).subscribe((seconds) => {
+    this.secondsLeft.set(Math.max(0, seconds));
+    if (seconds === 0) {
+      this.submitAndNext();
+    }
+  });
   }
 
   start(): void {
