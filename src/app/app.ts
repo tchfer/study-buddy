@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { UiStore } from './state/ui.store';
 import { NotificationsStore } from './state/notifications.store';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 type NavItem = {
   label: string;
@@ -32,6 +33,7 @@ type NavItem = {
     MatButtonModule,
     MatDividerModule,
     MatBadgeModule,
+    MatProgressBarModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -53,6 +55,8 @@ export class App {
     { label: 'Notifications', path: '/notifications', icon: 'notifications' },
     { label: 'Profile', path: '/profile', icon: 'person' },
   ]);
+
+  protected readonly uiStore = inject(UiStore);
 
   constructor() {
     effect(() => {
