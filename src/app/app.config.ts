@@ -6,6 +6,7 @@ import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 
 import { routes } from './app.routes';
 import { loggingInterceptor } from './core/interceptors/logging.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(
       withInterceptors([
-        loggingInterceptor
+        loggingInterceptor,
+        loadingInterceptor
       ])
     ),
     {
